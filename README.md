@@ -81,3 +81,7 @@ The program `main.py` connects all the differents parts of the repository into a
 * **env(string)**: Use to specify which enviornment you will use. Takes an OpenAI flag. 
 * **agents_path(string)**: The path to the file specifying which agents to use as well as specifying the training regiment for any DRL algorythems listed. Leave blank for `data/agents.txt`
 * **ensemble_path(string)**: The path to a file containing one line which has the configuration for how to choose which agent to use at each step. Some of the otpions for how to select an agent are epsilon-greedy or randomly selecting an agent. Another option is to have another DRL agent choose which agent to use. More information below. Leave blank for `data/ensemble.txt`
+
+## Example runs
+To demonstrate that this works I did a few sample runs which are currently in `data/logs` on the enviornment `CartePole-v0`. Here is a picture of the tensorboard training plot for those runs:
+![alt text](https://ibb.co/gz9wfCM)
