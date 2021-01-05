@@ -37,7 +37,10 @@ def main():
     set_start_method('spawn')
     os.makedirs(logs_folder)
     settings_file = open(logs_folder + '/settings.txt', 'w')
-    settings_file.write('Git Hash: %s\n\n'  % (subprocess.check_output('cat .git/ORIG_HEAD', shell=True).decode()))
+    try:
+        settings_file.write('Git Hash: %s\n\n'  % (subprocess.check_output('cat .git/ORIG_HEAD', shell=True).decode()))
+    except:
+        print("Failed to write Git hash to settings file!")
     settings_file.write('Command Arguments: ' + str(args)+ '\n\n')
     settings_file.write('Agents Configuration File:\n')
     with open(args.agents_path,'r') as agents_file:
