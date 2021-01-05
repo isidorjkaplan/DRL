@@ -1,0 +1,2 @@
+ValueAgent --net=Linear --train=dqn --model=dqn-linear.pt --deterministic=True
+RandomAgent

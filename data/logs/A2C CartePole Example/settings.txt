@@ -1,0 +1,28 @@
+Command Arguments: Namespace(agents_path='data/agents.txt', debug=False, ensemble_path='data/ensemble.txt', env='CartPole-v0')
+
+Agents Configuration File:
+	PolicyAgent --net=Linear --train=a2c --model=linear-a2c.pt
+
+Ensemble Configuration File: RandomAgent
+
+Trainer={'debug': True, 'agent': <src.agents.PolicyAgent object at 0x7fa06ffa6160>, 'backup_file': 'data/logs/05_01_2021 13_49_12/models/linear-a2c.pt', 'last_iter_time': 1609872552.4605088, 'plotter': <src.plotting.Plotter object at 0x7fa06ff44fd0>, 'tag': 'PolicyAgent net_Linear train_a2c model_lineara2c_pt', 'iter_num': 0, 'save_every': 1000, 'optimizer': Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    eps: 1e-08
+    lr: 0.001
+    weight_decay: 0
+), 'episode_tensorboard': True, 'batch_queue': <queue.Queue object at 0x7fa06ff9aee0>, 'episode_queue': <queue.Queue object at 0x7fa06ffa6220>, 'critic': True, 'gamma': 1, 'actor_weight': 1, 'critic_weight': 1, 'episode_num': 0, 'batch': [], 'batch_size': 100, 'entropy_weight': 1}
+Agent (PolicyAgent --net=Linear --train=a2c --model=linear-a2c.pt
+): Agent={'net': Linear(
+  (linear): Sequential(
+    (0): Linear(in_features=4, out_features=64, bias=True)
+    (1): ReLU()
+  )
+  (policy): Linear(in_features=64, out_features=2, bias=True)
+  (value): Linear(in_features=64, out_features=1, bias=True)
+  (advantages): Linear(in_features=64, out_features=2, bias=True)
+), 'debug': False, 'tag': 'PolicyAgent net_Linear train_a2c model_lineara2c_pt', 'n_actions': 2, 'write_file': <_io.TextIOWrapper name='data/logs/05_01_2021 13_49_12/agent_logs/PolicyAgent net_Linear train_a2c model_lineara2c_pt.csv' mode='w' encoding='UTF-8'>, 'csv_writer': <_csv.writer object at 0x7fa06ff98d10>, 'epsilon': 0}
+
+Agent (RandomAgent): Agent={'n_actions': 1, 'tag': 'RandomAgent'}
+
