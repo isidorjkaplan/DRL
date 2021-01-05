@@ -62,7 +62,6 @@ RandomAgent
 ```
 EpsilonGreedy --epsilon_start=1 --epsilon_finish=0.1 --epsilon_decay=0.0001
 ```
-This agent has the full observation space and sees 2 past observations. 4*2=8 input neurons
 
 ### Program Output
 The program will print some of it's information right into the console (TODO -> Store this in a file as well). This will include most of the debugging print statements as well as things such as "Connection established" messages as well as some training print statements. 
