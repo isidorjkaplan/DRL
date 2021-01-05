@@ -84,4 +84,4 @@ The program `main.py` connects all the differents parts of the repository into a
 
 ## Example runs
 To demonstrate that this works I did a few sample runs which are currently in `data/logs` on the enviornment `CartePole-v0`. Here is a picture of the tensorboard training plot for those runs:
-![alt text](https://ibb.co/gz9wfCM)
+![alt text](https://i.ibb.co/LnR6cfz/Screen-Shot-2021-01-05-at-2-05-32-PM.png)
