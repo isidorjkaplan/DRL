@@ -11,7 +11,7 @@ import csv
 import torch.nn.functional as F
 
 
-#Abstract agent class. Will be used for heuristics as well as the DRL agents. All it needs to do is receive observations and give actions.
+#Abstract agent class. Will be used for pre-coded as well as the DRL agents. All it needs to do is receive observations and give actions.
 class Agent(ABC):
     def __init__(self):
         self.tag = None
@@ -141,7 +141,7 @@ class ValueAgent(DeepAgent):
 
     
 #An agent that randomly selects a discrete action
-class DeterministicHeuristic(Agent):
+class Deterministic(Agent):
     def __init__(self, env):
         self.n_actions = env.action_space.n
         self.env = env
@@ -152,7 +152,7 @@ class DeterministicHeuristic(Agent):
         policy_dist[action] = 1
         return policy_dist
 
-class FixedAgent(DeterministicHeuristic):
+class FixedAgent(Deterministic):
     def __init__(self, env, fixed_action):
         super(FixedExpert, self).__init__(env)
         self.fixed_action = fixed_action
@@ -164,7 +164,7 @@ class FixedAgent(DeterministicHeuristic):
 #Note that the decay is per-step and not based on episodes or anything like that
 Epsilon = recordtype('Epsilon', field_names=['start', 'finish', 'decay'])
 
-class EpsilonGreedy(DeterministicHeuristic):
+class EpsilonGreedy(Deterministic):
     def __init__(self, env, epsilon_schedule):
         super(EpsilonGreedy, self).__init__(env)
         self.epsilon_schedule = epsilon_schedule
