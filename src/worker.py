@@ -84,8 +84,7 @@ class Worker():
         episode = Episode(steps, episode_reward, episode_speed)
         if self.episode_queue is not None:self.episode_queue.put(episode)
 
-        if self.debug:
-            print("Episode Finished: %s, len=%d, reward=%.3f" % (str(episode_num) if episode_num is not None else '', len(steps), episode_reward))
+        if self.debug:print("Episode Finished: %s, len=%d, reward=%.3f" % (str(episode_num) if episode_num is not None else '', len(steps), episode_reward))
         if self.plotter is not None:
             self.plotter.plot('episode', 'reward', episode_num, episode_reward)
             self.plotter.plot('episode', 'length', episode_num, len(steps))

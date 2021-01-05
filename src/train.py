@@ -25,7 +25,7 @@ import torch.nn.functional as F
     This is the general Trainer that all specific trainers extend from. It handles things such as Tensorboard, the optimizer, starting threads.
 """
 class Trainer(ABC):
-    def __init__(self, agent, debug=False, plotter=None, learning_rate=0.01, save_every=10, iter_num=0, backup_file=None):
+    def __init__(self, agent, debug=False, plotter=None, learning_rate=0.01, save_every=100, iter_num=0, backup_file=None):
         #There needs to be a way to read data or this will fail
         self.debug = debug
 
@@ -91,7 +91,7 @@ class Trainer(ABC):
 
 #The class to implement a trainer for the Cross-Entropy Method 
 class CEMTrainer(Trainer):
-    def __init__(self, agent, episode_queue, batch_queue=None, batch_size=16, percentile=75, debug=False, plotter=None, elite_buffer=False, save_every=1, learning_rate=0.01, iter_num=0, backup_file=None):
+    def __init__(self, agent, episode_queue, batch_queue=None, batch_size=64, percentile=90, debug=False, plotter=None, elite_buffer=False, save_every=1, learning_rate=0.01, iter_num=0, backup_file=None):
         super(CEMTrainer, self).__init__(agent=agent, debug=debug, plotter=plotter, save_every=save_every, learning_rate=learning_rate, iter_num=iter_num, backup_file=backup_file)
         assert type(agent) is agents.PolicyAgent
         self.batch = []
@@ -275,7 +275,7 @@ class DQNTrainer(Trainer):
         return loss_v
 
 class PolicyTrainer(Trainer):
-    def __init__(self, agent, batch_queue, gamma=1, batch_size=100, learning_rate=0.0001, episode_queue=None,plotter=None, debug=False, critic=True, actor_weight=1, critic_weight=1, entropy_weight=0.01, save_every=1000, episode_tensorboard=True, iter_num=0, backup_file=None):
+    def __init__(self, agent, batch_queue, gamma=1, batch_size=100, learning_rate=0.001, episode_queue=None,plotter=None, debug=False, critic=True, actor_weight=1, critic_weight=1, entropy_weight=0.01, save_every=1000, episode_tensorboard=True, iter_num=0, backup_file=None):
         super(PolicyTrainer, self).__init__(agent=agent, plotter=plotter, debug=debug, learning_rate=learning_rate,save_every=save_every, iter_num=iter_num, backup_file=backup_file)
         assert type(agent) is agents.PolicyAgent
         assert batch_queue is not None
